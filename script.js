@@ -8,6 +8,20 @@ const menuToggle = document.querySelector("[data-menu-toggle]");
 const nav = document.querySelector("[data-nav]");
 const navLinks = nav ? [...nav.querySelectorAll("a")] : [];
 
+
+document.querySelectorAll("[data-site-asset]").forEach((image) => {
+  const markLoaded = () => image.classList.add("is-loaded");
+  const markMissing = () => image.classList.remove("is-loaded");
+
+  image.addEventListener("load", markLoaded);
+  image.addEventListener("error", markMissing);
+
+  if (image.complete) {
+    if (image.naturalWidth > 0) markLoaded();
+    else markMissing();
+  }
+});
+
 function setHeaderState() {
   if (!header) return;
   header.classList.toggle("is-scrolled", window.scrollY > 18);
