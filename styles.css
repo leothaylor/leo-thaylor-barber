@@ -495,6 +495,15 @@ h2 {
   filter: brightness(.92);
 }
 
+.work-image.is-loaded {
+  cursor: zoom-in;
+}
+
+.work-image:focus-visible {
+  outline: 3px solid var(--ink);
+  outline-offset: -5px;
+}
+
 .work-placeholder span {
   font-family: Georgia, "Times New Roman", serif;
   font-size: 40px;
@@ -1303,5 +1312,79 @@ h2 {
   .contact-list > div {
     grid-template-columns: 1fr;
     gap: 4px;
+  }
+}
+
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  background: rgba(0,0,0,.9);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity .22s ease, visibility .22s ease;
+  backdrop-filter: blur(10px);
+}
+
+.lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.lightbox-image {
+  max-width: min(94vw, 1400px);
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 14px;
+  box-shadow: 0 24px 80px rgba(0,0,0,.5);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 22px;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(255,255,255,.24);
+  border-radius: 50%;
+  background: rgba(15,15,15,.72);
+  color: #fff;
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.lightbox-close:hover {
+  background: #fff;
+  color: #111;
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
+@media (max-width: 760px) {
+  .lightbox {
+    padding: 14px;
+  }
+
+  .lightbox-image {
+    max-width: 96vw;
+    max-height: 86vh;
+    border-radius: 10px;
+  }
+
+  .lightbox-close {
+    top: 12px;
+    right: 12px;
   }
 }
