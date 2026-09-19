@@ -16,15 +16,19 @@ Estrutura implementada:
 - Localização / contato
 - CTA final
 
-## Pendências editoriais
+## Assets de imagem
 
-A V1 usa placeholders intencionais enquanto os assets definitivos não são selecionados.
+A estrutura de imagens já está preparada em `assets/`.
+
+Para inserir as fotos sem editar o HTML, basta subir os arquivos com os nomes canônicos documentados em `assets/README.md`.
+
+Enquanto o arquivo correspondente não existe, o site mantém o placeholder visual.
+
+## Pendências editoriais
 
 Ainda precisam ser definidos:
 
-- foto principal;
-- fotos reais de trabalhos;
-- pares reais de Before/After;
+- fotos definitivas;
 - relatos reais de clientes;
 - número de WhatsApp;
 - endereço final;
@@ -41,6 +45,3 @@ Nenhum depoimento fictício foi inserido.
 - sem build step
 - sem dependências externas obrigatórias
 
-## Observação sobre o arquivo de imagem existente
-
-O arquivo `SaveClip.App_650602293_18576277663015384_8553350928817506335_n.jpg` já existia no repositório antes da construção desta V1. Ele é uma foto de resultado de barba, mas está sendo desconsiderado por enquanto e não foi usado no layout atual.
