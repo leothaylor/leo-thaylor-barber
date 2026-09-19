@@ -4,7 +4,7 @@ V1 do site pessoal de **Leo Thaylor**, construída em HTML, CSS e JavaScript pur
 
 ## Estado atual
 
-Branch de desenvolvimento: `v1-site`
+Branch oficial e fonte única de verdade: `main`
 
 Estrutura implementada:
 
