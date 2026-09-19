@@ -103,3 +103,51 @@ if ("IntersectionObserver" in window) {
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape") closeMenu();
 });
+
+
+const lightbox = document.querySelector("[data-lightbox]");
+const lightboxImage = document.querySelector("[data-lightbox-image]");
+const lightboxClose = document.querySelector("[data-lightbox-close]");
+const galleryImages = [...document.querySelectorAll("[data-gallery-image]")];
+
+function openLightbox(image) {
+  if (!lightbox || !lightboxImage || !image || image.naturalWidth === 0) return;
+
+  lightboxImage.src = image.currentSrc || image.src;
+  lightboxImage.alt = image.alt || "Trabalho ampliado";
+  lightbox.classList.add("is-open");
+  lightbox.setAttribute("aria-hidden", "false");
+  document.body.classList.add("lightbox-open");
+  lightboxClose?.focus();
+}
+
+function closeLightbox() {
+  if (!lightbox || !lightboxImage) return;
+
+  lightbox.classList.remove("is-open");
+  lightbox.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("lightbox-open");
+  lightboxImage.removeAttribute("src");
+}
+
+galleryImages.forEach((image) => {
+  image.addEventListener("click", () => openLightbox(image));
+  image.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      openLightbox(image);
+    }
+  });
+});
+
+lightboxClose?.addEventListener("click", closeLightbox);
+
+lightbox?.addEventListener("click", (event) => {
+  if (event.target === lightbox) closeLightbox();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && lightbox?.classList.contains("is-open")) {
+    closeLightbox();
+  }
+});
