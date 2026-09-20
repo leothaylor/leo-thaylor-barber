@@ -1,6 +1,11 @@
 const SITE_CONFIG = {
-  whatsappUrl: "",
-  instagramUrl: "https://www.instagram.com/leothaylor/"
+  whatsappNumber: "",
+  instagramUrl: "https://www.instagram.com/leothaylor/",
+  whatsappMessages: {
+    barbearia: "Oi, Leo. Vim pelo site e queria confirmar se você está atendendo agora na barbearia.",
+    domicilio: "Oi, Leo. Vim pelo site e queria consultar disponibilidade para atendimento em domicílio.",
+    geral: "Oi, Leo. Vim pelo site e queria falar com você."
+  }
 };
 
 const header = document.querySelector("[data-header]");
@@ -52,9 +57,34 @@ if (menuToggle && nav) {
 window.addEventListener("scroll", setHeaderState, { passive: true });
 setHeaderState();
 
+function buildWhatsAppUrl(intent = "geral") {
+  const number = String(SITE_CONFIG.whatsappNumber || "").replace(/\D/g, "");
+  const message = SITE_CONFIG.whatsappMessages[intent] || SITE_CONFIG.whatsappMessages.geral;
+
+  if (!number) return "";
+  return `https://wa.me/${number}?text=${encodeURIComponent(message)}`;
+}
+
+document.querySelectorAll("[data-whatsapp-intent]").forEach((link) => {
+  const intent = link.dataset.whatsappIntent || "geral";
+  const url = buildWhatsAppUrl(intent);
+
+  if (url) {
+    link.href = url;
+    link.target = "_blank";
+    link.rel = "noreferrer";
+    return;
+  }
+
+  link.href = "#contato";
+  link.title = "Número de WhatsApp será adicionado na próxima revisão";
+});
+
 document.querySelectorAll("[data-whatsapp-link]").forEach((link) => {
-  if (SITE_CONFIG.whatsappUrl) {
-    link.href = SITE_CONFIG.whatsappUrl;
+  const url = buildWhatsAppUrl("geral");
+
+  if (url) {
+    link.href = url;
     link.target = "_blank";
     link.rel = "noreferrer";
     return;
