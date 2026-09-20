@@ -1,12 +1,72 @@
 const SITE_CONFIG = {
   whatsappNumber: "5521982808635",
   instagramUrl: "https://www.instagram.com/leothaylor/",
+  testimonialFormUrl: "",
   whatsappMessages: {
     barbearia: "Oi, Leo. Vim pelo site e queria confirmar se você está atendendo agora na barbearia.",
     domicilio: "Oi, Leo. Vim pelo site e queria consultar disponibilidade para atendimento em domicílio.",
     geral: "Oi, Leo. Vim pelo site e queria falar com você."
   }
 };
+
+// Fluxo dos relatos:
+// Google Forms -> revisão manual -> publicar apenas relatos aprovados aqui.
+// Depois de criar o formulário, basta preencher testimonialFormUrl no SITE_CONFIG.
+const BARBER_TESTIMONIALS = [
+  // Exemplo de estrutura futura:
+  // { nome: "Nome do cliente", meta: "Cliente", texto: "Relato aprovado para publicação." }
+];
+
+const testimonialGrid = document.querySelector("[data-testimonial-grid]");
+const testimonialFormLink = document.querySelector("[data-testimonial-form]");
+
+if (testimonialFormLink) {
+  if (SITE_CONFIG.testimonialFormUrl) {
+    testimonialFormLink.href = SITE_CONFIG.testimonialFormUrl;
+    testimonialFormLink.target = "_blank";
+    testimonialFormLink.rel = "noopener noreferrer";
+    testimonialFormLink.textContent = "Enviar meu relato";
+    testimonialFormLink.classList.remove("is-disabled");
+    testimonialFormLink.removeAttribute("aria-disabled");
+  } else {
+    testimonialFormLink.href = "#relatos";
+    testimonialFormLink.textContent = "Formulário em breve";
+    testimonialFormLink.classList.add("is-disabled");
+    testimonialFormLink.setAttribute("aria-disabled", "true");
+  }
+}
+
+if (testimonialGrid && BARBER_TESTIMONIALS.length) {
+  testimonialGrid.replaceChildren();
+
+  BARBER_TESTIMONIALS.forEach((relato, index) => {
+    const card = document.createElement("article");
+    card.className = "testimonial-card";
+
+    const number = document.createElement("span");
+    number.className = "testimonial-index";
+    number.textContent = String(index + 1).padStart(2, "0");
+
+    const text = document.createElement("p");
+    text.className = "testimonial-text";
+    text.textContent = relato.texto;
+
+    const person = document.createElement("footer");
+    person.className = "testimonial-person";
+
+    const name = document.createElement("strong");
+    name.className = "testimonial-name";
+    name.textContent = relato.nome;
+
+    const meta = document.createElement("span");
+    meta.className = "testimonial-meta";
+    meta.textContent = relato.meta || "Cliente";
+
+    person.append(name, meta);
+    card.append(number, text, person);
+    testimonialGrid.appendChild(card);
+  });
+}
 
 const header = document.querySelector("[data-header]");
 const menuToggle = document.querySelector("[data-menu-toggle]");
