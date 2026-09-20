@@ -722,6 +722,74 @@ h2 {
   color: #817c72;
 }
 
+.testimonial-card--empty {
+  background: rgba(17,17,15,.018);
+}
+
+.testimonial-text {
+  margin: auto 0 26px;
+  max-width: 320px;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 25px;
+  line-height: 1.18;
+  color: #37342e;
+}
+
+.testimonial-person {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.testimonial-name {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.testimonial-meta {
+  color: #817c72;
+  font-size: 12px;
+}
+
+.testimonial-cta {
+  margin-top: 34px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.testimonial-cta p {
+  margin: 0;
+  max-width: 620px;
+  color: #5f5a51;
+}
+
+.testimonial-cta strong {
+  color: var(--ink);
+}
+
+.button-testimonial {
+  flex: 0 0 auto;
+  border-color: var(--ink);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.button-testimonial:hover {
+  background: transparent;
+  color: var(--ink);
+}
+
+.button-testimonial.is-disabled {
+  opacity: .48;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
 .section-house {
   padding: 0;
   background: #cec8bb;
@@ -1232,6 +1300,20 @@ h2 {
   .testimonial-placeholder {
     max-width: none;
     font-size: 25px;
+  }
+
+  .testimonial-text {
+    max-width: none;
+    font-size: 23px;
+  }
+
+  .testimonial-cta {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .testimonial-cta .button {
+    width: 100%;
   }
 
   .house-grid {
