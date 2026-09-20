@@ -881,6 +881,23 @@ h2 {
   background: #171714;
 }
 
+.map-card-route {
+  display: block;
+  color: inherit;
+  transition: transform .28s var(--ease), border-color .28s ease, background .28s ease;
+}
+
+.map-card-route:hover {
+  transform: translateY(-2px);
+  border-color: rgba(227,214,174,.5);
+  background: #1b1a17;
+}
+
+.map-card-route:focus-visible {
+  outline: 2px solid var(--accent-strong);
+  outline-offset: 4px;
+}
+
 .map-grid {
   position: absolute;
   inset: -20%;
