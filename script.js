@@ -1,5 +1,5 @@
 const SITE_CONFIG = {
-  whatsappNumber: "",
+  whatsappNumber: "5521982808635",
   instagramUrl: "https://www.instagram.com/leothaylor/",
   whatsappMessages: {
     barbearia: "Oi, Leo. Vim pelo site e queria confirmar se você está atendendo agora na barbearia.",
