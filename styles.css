@@ -731,7 +731,7 @@ h2 {
 }
 
 .house-image {
-  z-index: 0;
+  z-index: 2;
 }
 
 .house-placeholder span {
