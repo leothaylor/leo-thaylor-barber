@@ -712,7 +712,9 @@ h2 {
 }
 
 .house-visual {
-  min-height: 720px;
+  min-height: 0;
+  aspect-ratio: 1143 / 2048;
+  overflow: hidden;
   background: #a9a294;
 }
 
@@ -1244,7 +1246,8 @@ h2 {
   }
 
   .house-visual {
-    min-height: 520px;
+    min-height: 0;
+    aspect-ratio: 1143 / 2048;
   }
 
   .house-copy {
