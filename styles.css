@@ -193,6 +193,18 @@ h2 {
   color: var(--ink);
 }
 
+.button-outline {
+  background: transparent;
+  color: var(--paper);
+  border-color: rgba(240,237,229,.65);
+}
+
+.button-outline:hover {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--paper);
+}
+
 .text-link {
   display: inline-flex;
   align-items: center;
@@ -320,8 +332,20 @@ h2 {
 .hero-actions {
   display: flex;
   align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hero-links {
+  display: flex;
+  align-items: center;
   gap: 24px;
   flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.hero-links .text-link {
+  color: var(--paper-soft);
 }
 
 .hero-meta {
@@ -1285,6 +1309,12 @@ h2 {
   .location-actions {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .hero-links {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
   }
 
   .button {
