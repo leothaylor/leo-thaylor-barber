@@ -1243,6 +1243,10 @@ h2 {
     display: contents;
   }
 
+  .hero-actions {
+    align-self: center;
+  }
+
   .hero-lead {
     font-size: 20px;
   }
