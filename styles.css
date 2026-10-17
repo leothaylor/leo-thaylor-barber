@@ -1234,12 +1234,13 @@ h2 {
   }
 
   .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 46px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
   }
 
   .hero-copy {
-    padding-bottom: 0;
+    display: contents;
   }
 
   .hero-lead {
@@ -1247,11 +1248,16 @@ h2 {
   }
 
   .hero-meta {
-    margin-top: 42px;
+    order: -2;
+    align-self: stretch;
+    width: 100%;
+    margin: 0 0 24px;
   }
 
   .hero-visual {
+    order: -1;
     min-height: auto;
+    margin-bottom: 46px;
   }
 
   .visual-frame {
@@ -1269,6 +1275,12 @@ h2 {
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 200px;
     gap: 8px;
+  }
+
+  /* No celular, omite apenas os slots 01 e 04 enquanto estiverem sem foto. */
+  .gallery-grid > .work-card:nth-child(1):not(:has(.work-image.is-loaded)),
+  .gallery-grid > .work-card:nth-child(4):not(:has(.work-image.is-loaded)) {
+    display: none;
   }
 
   .work-card-tall {
