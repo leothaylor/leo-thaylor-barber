@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Catálogo de referências de cortes, barbas, bigodes e desenhos para escolher seu próximo estilo com Leo Thaylor.">
+  <meta name="theme-color" content="#0b0b0b">
+  <title>Catálogo de Estilos — Leo Thaylor</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="catalogo.css">
+  <script src="script.js" defer></script>
+  <script src="catalogo-dados.js" defer></script>
+  <script src="catalogo.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o catálogo</a>
+  <header class="site-header" data-header>
+    <div class="shell header-inner">
+      <a class="brand" href="index.html" aria-label="Barbeiro — página inicial">Barbeiro</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-principal" data-menu-toggle>
+        <span></span><span></span>
+        <span class="sr-only">Abrir menu</span>
+      </button>
+      <nav class="nav" id="menu-principal" aria-label="Navegação principal" data-nav>
+        <a href="index.html">Início</a>
+        <a href="index.html#trabalhos">Meus trabalhos</a>
+        <a href="catalogo.html" aria-current="page">Catálogo</a>
+        <a href="index.html#atendimento">Atendimento</a>
+        <a href="index.html#contato">Me encontre</a>
+      </nav>
+      <a class="button button-small header-cta" href="index.html#contato">Contato</a>
+    </div>
+  </header>
+  <main id="conteudo" class="catalog-page">
+    <section class="catalog-intro shell" aria-labelledby="catalog-title">
+      <a class="catalog-back" href="index.html">← Voltar ao site</a>
+      <p class="eyebrow">Referências visuais · Leo Thaylor</p>
+      <h1 id="catalog-title">Catálogo de estilos.</h1>
+      <p class="catalog-lead">Explore opções de cortes, barbas, bigodes e desenhos. Toque em uma imagem para ver os detalhes e escolher sua referência.</p>
+      <p class="catalog-disclaimer">Imagens ilustrativas de referência, não portfólio de serviços realizados. O resultado depende das características de cada cabelo e barba.</p>
+    </section>
+    <section class="catalog-content shell" aria-label="Explorar os estilos">
+      <div class="catalog-toolbar">
+        <label class="catalog-search">
+          <span class="sr-only">Pesquisar um estilo</span>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"></circle><path d="m15.5 15.5 5 5"></path></svg>
+          <input type="search" id="catalog-search" placeholder="Buscar um estilo..." autocomplete="off">
+        </label>
+        <div class="catalog-filters" role="group" aria-label="Filtrar por tipo">
+          <button class="catalog-filter is-active" type="button" data-category="todos" aria-pressed="true">Todos</button>
+          <button class="catalog-filter" type="button" data-category="cortes" aria-pressed="false">Cortes</button>
+          <button class="catalog-filter" type="button" data-category="barbas" aria-pressed="false">Barbas</button>
+          <button class="catalog-filter" type="button" data-category="bigodes" aria-pressed="false">Bigodes e cavanhaques</button>
+          <button class="catalog-filter" type="button" data-category="desenhos" aria-pressed="false">Desenhos</button>
+        </div>
+      </div>
+      <div class="catalog-state" aria-live="polite" id="catalog-status">Verificando referências disponíveis...</div>
+      <div class="catalog-grid" id="catalog-grid" aria-label="Imagens de referência"></div>
+      <div class="catalog-empty" id="catalog-empty" hidden>
+        <p id="catalog-empty-text">As referências estão sendo adicionadas ao catálogo.</p>
+        <a class="text-link" href="index.html#trabalhos">Ver meus trabalhos <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="catalog-bottom">
+        <p>Gostou de uma referência? Mostre a imagem durante o atendimento para conversarmos sobre o corte.</p>
+        <a class="button button-outline" href="index.html#contato">Consultar atendimento</a>
+      </div>
+    </section>
+  </main>
+  <dialog class="catalog-dialog" id="catalog-dialog" aria-labelledby="catalog-dialog-title">
+    <div class="catalog-dialog-inner">
+      <button type="button" class="catalog-dialog-close" id="catalog-dialog-close" aria-label="Fechar imagem">×</button>
+      <button type="button" class="catalog-dialog-arrow catalog-dialog-prev" id="catalog-dialog-prev" aria-label="Imagem anterior">‹</button>
+      <img class="catalog-dialog-img" id="catalog-dialog-img" alt="">
+      <button type="button" class="catalog-dialog-arrow catalog-dialog-next" id="catalog-dialog-next" aria-label="Próxima imagem">›</button>
+      <div class="catalog-dialog-caption">
+        <h2 id="catalog-dialog-title"></h2>
+        <span id="catalog-dialog-count"></span>
+      </div>
+    </div>
+  </dialog>
+  <footer class="site-footer">
+    <div class="shell footer-inner">
+      <a class="brand" href="index.html">Leo Thaylor</a>
+      <p>Barbeiro · Rio de Janeiro</p>
+      <a href="https://www.instagram.com/leothaylor/" target="_blank" rel="noreferrer">@leothaylor</a>
+    </div>
+  </footer>
+</body>
+</html>
