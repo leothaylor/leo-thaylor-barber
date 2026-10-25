@@ -19,7 +19,9 @@
   if (!grid || !status || !search || !dialog) return;
 
   const labels = { cortes: "Corte", barbas: "Barba", bigodes: "Bigode / cavanhaque", desenhos: "Desenho" };
-  const path = (item) => "assets/catalogo/" + encodeURIComponent(item.file);
+  const filePath = (file) => "assets/catalogo/" + encodeURIComponent(file);
+  const path = (item) => item.resolvedPath || filePath(item.file);
+  const candidates = (item) => [filePath(item.file.replace(/\.png$/i, ".webp")), filePath(item.file)];
   const clean = (value) => String(value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
   let published = [];
   let filtered = [];
@@ -28,18 +30,28 @@
   let lastTrigger = null;
   let ready = false;
 
-  async function exists(item) {
+  async function probe(url) {
     try {
-      const response = await fetch(path(item), { method: "HEAD" });
+      const response = await fetch(url, { method: "HEAD" });
       if (response.ok) return true;
       if (response.status !== 405 && response.status !== 501) return false;
-    } catch (_) { /* HEAD indisponível; tentar imagem normal. */ }
+    } catch (_) { /* HEAD indisponível; tentar carregar normalmente. */ }
     return await new Promise((resolve) => {
       const img = new Image();
       img.onload = () => resolve(true);
       img.onerror = () => resolve(false);
-      img.src = path(item);
+      img.src = url;
     });
+  }
+
+  async function exists(item) {
+    for (const candidate of candidates(item)) {
+      if (await probe(candidate)) {
+        item.resolvedPath = candidate;
+        return true;
+      }
+    }
+    return false;
   }
 
   async function discover() {
